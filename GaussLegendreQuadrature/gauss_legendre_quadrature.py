@@ -1,5 +1,6 @@
 import numpy as np
 
+# G.B. Rybicki routine for nodes and weights computation
 def gauleg(lb, ub, nodes=128):
     
     # init
@@ -15,6 +16,7 @@ def gauleg(lb, ub, nodes=128):
     z1 = 10e2
 
     z = np.cos(np.pi * (np.arange(m) +0.75)/(nodes + 0.5))
+
     while np.all(np.abs(z - z1) > prec):
         p1 = 1.
         p2 = 0.
@@ -38,11 +40,11 @@ def gl_quadrature(f, lb, ub, nodes=128):
     
     # computation of quadrature weights and nodes
     x, w = gauleg(lb, ub, nodes)
-    
+
+    # computation of integration points
     func_vec = w * f(x)
     return np.sum(func_vec)
-    
-    return 
+
 
 def f(x):
     return np.exp(3*x) * x**2 + 0.5 * np.log(x)

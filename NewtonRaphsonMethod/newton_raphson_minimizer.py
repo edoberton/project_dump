@@ -6,6 +6,14 @@
 # github repo:
 # TODO: write the documentation
 
+# Issues:
+# If the search interval includes a local max or local min of the function, the method will not approach the root
+# If the funciton is not well behaved, then the method can start iterating without convergence
+
+# NOTES:
+# Newton-Raphson method can also be used at final steps of root-finding routines to "polish" previously obtained results (once the result is close enough to the real root)
+# Newton-Raphson with numerical derivatives is always dominated by Brent’s method
+
 def fprime(f, x0, h=1e-5): # first derivative calculations
     return (f(x0 + h) - f(x0 - h))/(2*h)
 
