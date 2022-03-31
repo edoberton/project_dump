@@ -44,9 +44,10 @@ def nr_minimizer(f, x, epsilon=1e-10):  # main method
         x2 = minimizer()
     return x2
 
-def f(x): # function to be solved
-    return x**3 - x - 1
-    # return x**2 + np.exp(x) -2
+if __name__ == '__main':
+    def f(x): # function to be solved
+        return x**3 - x - 1
+        # return x**2 + np.exp(x) -2
 
-sol = nr_minimizer(f, 5) # 5 = initial guess
-print(sol)
+    sol = nr_minimizer(f, 5) # 5 = initial guess
+    print(sol)
