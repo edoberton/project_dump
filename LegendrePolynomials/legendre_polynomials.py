@@ -1,8 +1,9 @@
 # Legendre polynomials 
 
-# to reimplement using closure methods
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
 
 def lp_init(x): 
         
@@ -37,14 +38,25 @@ def lp_generator(n, x):
         
     return pol
 
+def polynomial_plot(n, x):
 
-x = np.linspace(-1, 1, 200)
-# highest order of the polynomial
-n = 8
+    polynomials = lp_generator(n,x)
+    pol = pd.DataFrame(data=np.transpose(polynomials[1:, :]))
+    pol.columns = ['deg. ' + str(i + 1) for i in range(len(pol.columns))]
+    pol.index = x
+    fig = plt.figure(figsize=(10,8)) # image size
+    sns.lineplot(data=pol)
+    # dashed grey line at 0
+    sns.lineplot(y = np.zeros(len(x)), x = x, color='grey', linestyle='--')
+    plt.show()
 
-polynomials = lp_generator(n,x)
 
-for i in range(1, n+1):
-    plt.plot(x, polynomials[i,:], label ="P "+str(i)) 
-    plt.legend()
+if __name__ == '__main__':
+    x = np.linspace(-1, 1, 200)
+    n = 4 # highest order of the polynomial
+
+    # numpy matrix of polynomial values
+    pol = lp_generator(n,x)
+    # method to plot polynomials
+    polynomial_plot(n,x)
 
