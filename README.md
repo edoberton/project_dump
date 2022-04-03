@@ -1,4 +1,4 @@
-# project dump
+# project repo
 Dump for minor projects, bits of code and few-lines tools.
 
 ---
