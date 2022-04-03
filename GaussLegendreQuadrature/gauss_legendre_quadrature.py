@@ -45,8 +45,8 @@ def gl_quadrature(f, lb, ub, nodes=128):
     func_vec = w * f(x)
     return np.sum(func_vec)
 
+if __name__ == '__main__':
+    def f(x):
+        return np.exp(3*x) * x**2 + 0.5 * np.log(x)
 
-def f(x):
-    return np.exp(3*x) * x**2 + 0.5 * np.log(x)
-
-int_sum = gl_quadrature(f, 0, 2)
+    int_sum = gl_quadrature(f, 0, 2)
